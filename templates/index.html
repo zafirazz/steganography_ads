@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Steganography - Encode</title>
+</head>
+<body>
+    <h1>Hide a Message in an Image</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="post" enctype="multipart/form-data">
+        <label for="image">Select PNG image:</label>
+        <input type="file" name="image" accept="image/png" required><br><br>
+        <label for="message">Message:</label>
+        <input type="text" name="message" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+        <button type="submit">Encode & Download</button>
+    </form>
+    <br>
+    <a href="{{ url_for('decode') }}">Decode a message</a>
+</body>
+</html> 
